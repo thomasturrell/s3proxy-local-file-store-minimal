@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>example</groupId>
+  <artifactId>s3proxy-minimal</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Latest as of 20 Nov 2025 on Maven Central -->
+    <s3proxy.version>2.9.0</s3proxy.version>
+    <aws.sdk.version>2.25.64</aws.sdk.version>
+    <jclouds.version>2.7.0</jclouds.version>
+  </properties>
+
+  <dependencies>
+    <!-- S3Proxy -->
+    <dependency>
+      <groupId>org.gaul</groupId>
+      <artifactId>s3proxy</artifactId>
+      <version>${s3proxy.version}</version>
+    </dependency>
+
+    <!-- jclouds filesystem backend (BlobStore provider) -->
+    <dependency>
+      <groupId>org.apache.jclouds.api</groupId>
+      <artifactId>filesystem</artifactId>
+      <version>${jclouds.version}</version>
+    </dependency>
+
+    <!-- AWS SDK v2 S3 client -->
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+      <version>${aws.sdk.version}</version>
+    </dependency>
+
+    <!-- Simple logging so you can see what's happening -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.16</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <configuration>
+          <mainClass>example.App</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
